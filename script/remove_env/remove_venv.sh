@@ -4,7 +4,7 @@ project_directory="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 venv_directory="$project_directory/venv"
 
 echo "-----------------------------------------------------------------------------"
-echo "|                         Remove Environment (venv)                        |"
+echo "|                         Remove Environment (venv)                         |"
 echo "| Author : Alexis EGEA                                                      |"
 echo "-----------------------------------------------------------------------------"
 echo
