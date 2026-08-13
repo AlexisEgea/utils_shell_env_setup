@@ -20,7 +20,7 @@ exit_error() {
 }
 
 echo "-----------------------------------------------------------------------------"
-echo "|                          Installation Requirements                        |"
+echo "|                    Installation Requirements (venv)                       |"
 echo "| Author : Alexis EGEA                                                      |"
 echo "-----------------------------------------------------------------------------"
 
