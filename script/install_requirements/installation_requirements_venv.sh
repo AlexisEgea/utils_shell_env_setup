@@ -74,5 +74,5 @@ echo "Requirements installed."
 echo
 
 echo
-echo "Done! Project is ready to be executed."
+echo "Venv project environment is ready."
 read -p "Press any key to close the terminal window..."
