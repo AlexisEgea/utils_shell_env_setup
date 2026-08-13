@@ -14,10 +14,14 @@
       "name": "Python: conda debug",
       "type": "debugpy",
       "request": "launch",
-      "python": "${env:USERPROFILE}\\anaconda3\\envs\\utils_shell_env_setup\\python.exe",
+      "python": "${userHome}\\anaconda3\\envs\\utils_shell_env_setup\\python.exe",
       "program": "${workspaceFolder}/src/main.py",
       "console": "integratedTerminal",
-      "cwd": "${workspaceFolder}/src"
+      "cwd": "${workspaceFolder}/src",
+      "env": {
+        "CONDA_DEFAULT_ENV": "utils_shell_env_setup",
+        "CONDA_PREFIX": "${userHome}\\anaconda3\\envs\\utils_shell_env_setup"
+      }
     }
   ]
 }
