@@ -5,20 +5,6 @@ script_directory="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 echo project_directory: $project_directory
 echo script_directory: $script_directory
 
-# Function to display a success message
-print_success() {
-  # Print a standardized success line for detected tools.
-  echo "✔ $1 is installed: $2"
-}
-
-# Function to display an error message with download link and pause
-exit_error() {
-  # Exit after showing a generic prerequisite error message.
-  echo "Script stopped. Please install the missing prerequisite and rerun the script."
-  read -p ""
-  exit 1
-}
-
 echo "-----------------------------------------------------------------------------"
 echo "|                    Installation Requirements (venv)                       |"
 echo "| Author : Alexis EGEA                                                      |"
@@ -50,13 +36,15 @@ if command -v $PYTHON_CMD &>/dev/null; then
     echo "❌ Python version is too old: $PYTHON_VERSION (required: >= $python_version)"
     echo "Download Python here: https://www.python.org/downloads"
     echo "Important: Check the box to 'Add Python version to PATH' during installation to make the new version accessible via the python command."
-    exit_error
+    read -p "Script stopped. Please install the missing prerequisite and rerun the script."
+    exit 1
   fi
 else
   echo "❌ Python (version >= $python_version required) is not installed."
   echo "Download it here: https://www.python.org/downloads"
   echo "Important: Check the box to 'Add Python version to PATH' during installation to make the new version accessible via the python command."
-  exit_error
+  read -p "Script stopped. Please install the missing prerequisite and rerun the script."
+  exit 1
 fi
 
 echo "_____________________________________________________________________________"
