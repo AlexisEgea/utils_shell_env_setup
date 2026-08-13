@@ -2,13 +2,26 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Python: Debug with venv",
+      "name": "Python: venv debug",
       "type": "debugpy",
       "request": "launch",
       "python": "${workspaceFolder}\\venv\\Scripts\\python.exe",
       "program": "${workspaceFolder}/src/main.py",
       "console": "integratedTerminal",
       "cwd": "${workspaceFolder}/src"
+    },
+    {
+      "name": "Python: conda debug",
+      "type": "debugpy",
+      "request": "launch",
+      "python": "${userHome}\\anaconda3\\envs\\utils_shell_env_setup\\python.exe",
+      "program": "${workspaceFolder}/src/main.py",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}/src",
+      "env": {
+        "CONDA_DEFAULT_ENV": "utils_shell_env_setup",
+        "CONDA_PREFIX": "${userHome}\\anaconda3\\envs\\utils_shell_env_setup"
+      }
     }
   ]
 }
