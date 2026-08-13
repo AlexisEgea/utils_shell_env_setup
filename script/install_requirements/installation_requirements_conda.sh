@@ -57,15 +57,6 @@ python -m pip install -r "$project_directory/infra/requirements.txt" || { read -
 echo "Requirements installed."
 echo
 
-echo "_____________________________________________________________________________"
-echo "Making launcher scripts executable..."
-cd "$project_directory/script/launch_program"
-for script in *.sh; do
-  chmod +x "$script"
-  echo "$script"
-done
-echo "Scripts executable"
-
 echo
-echo "Done! Conda project environment is ready."
+echo "Conda project environment is ready."
 read -p "Press any key to close the terminal window..."
