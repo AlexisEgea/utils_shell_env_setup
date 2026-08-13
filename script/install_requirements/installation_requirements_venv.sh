@@ -1,14 +1,15 @@
 #!/bin/bash
 
 project_directory="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
-script_directory="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-echo project_directory: $project_directory
-echo script_directory: $script_directory
 
 echo "-----------------------------------------------------------------------------"
 echo "|                    Installation Requirements (venv)                       |"
 echo "| Author : Alexis EGEA                                                      |"
 echo "-----------------------------------------------------------------------------"
+echo 
+
+echo "Project directory: $project_directory"
+echo 
 
 # Detecting the OS and determining the appropriate Python command
 echo "OS detected: $OSTYPE"
@@ -31,28 +32,26 @@ if command -v $PYTHON_CMD &>/dev/null; then
   # if result == required version 
   # (meaning the detected version is greater than or equal to the required version), 
   if [[ "$(printf '%s\n%s\n' "$python_version" "$PYTHON_VERSION" | sort -V | awk 'NR==1')" == "$python_version" ]]; then
-    echo "✅ Python is installed: $PYTHON_VERSION (required: >= $python_version)"
+    echo "Python is installed: $PYTHON_VERSION (required: >= $python_version)"
   else
-    echo "❌ Python version is too old: $PYTHON_VERSION (required: >= $python_version)"
+    echo "Python version is too old: $PYTHON_VERSION (required: >= $python_version)"
     echo "Download Python here: https://www.python.org/downloads"
-    echo "Important: Check the box to 'Add Python version to PATH' during installation to make the new version accessible via the python command."
-    read -p "Script stopped. Please install the missing prerequisite and rerun the script."
+    read -p "Important: Check the box to 'Add Python version to PATH' during installation to make the new version accessible via the python command."
     exit 1
   fi
 else
-  echo "❌ Python (version >= $python_version required) is not installed."
+  echo "Python (version >= $python_version required) is not installed."
   echo "Download it here: https://www.python.org/downloads"
-  echo "Important: Check the box to 'Add Python version to PATH' during installation to make the new version accessible via the python command."
-  read -p "Script stopped. Please install the missing prerequisite and rerun the script."
+  read -p "Important: Check the box to 'Add Python version to PATH' during installation to make the new version accessible via the python command."
   exit 1
 fi
 
 echo "_____________________________________________________________________________"
 echo "Creating virtual environment..."
 if [[ -d "$project_directory/venv" ]]; then
-  echo "ℹ️ Virtual environment 'venv' is already created."
+  echo "Virtual environment 'venv' is already created."
 else
-  $PYTHON_CMD -m venv "$project_directory/venv" && echo "✅ Virtual environment created." || { read -p "❌ Failed to create virtual environment."; exit 1; }
+  $PYTHON_CMD -m venv "$project_directory/venv" && echo "Virtual environment created." || { read -p "Failed to create virtual environment."; exit 1; }
 fi
 
 echo "_____________________________________________________________________________"
@@ -63,15 +62,15 @@ if [[ "$OSTYPE" == "linux-gnu"* || "$OSTYPE" == "darwin"* ]]; then
 elif [[ "$OSTYPE" == "cygwin"* || "$OSTYPE" == "msys"* ]]; then
     source "$project_directory/venv/Scripts/activate"
 else
-    read -p "❌ Cannot activate virtual environment for OS: $OSTYPE"
+    read -p "Cannot activate virtual environment for OS: $OSTYPE"
     exit 1
 fi
-echo "✅ Virtual environment activated."
+echo "Virtual environment activated."
 
 echo "_____________________________________________________________________________"
 echo "Installing requirements from requirements.txt..."
-pip install -r "$project_directory/infra/requirements.txt" || { read -p "❌ Failed to install dependencies"; exit 1; }
-echo "✅ Requirements installed."
+pip install -r "$project_directory/infra/requirements.txt" || { read -p "Failed to install dependencies"; exit 1; }
+echo "Requirements installed."
 echo
 
 echo "_____________________________________________________________________________"
@@ -81,8 +80,8 @@ for script in *.sh; do
   chmod +x "$script"
   echo "$script"
 done
-echo "✅ Scripts executable"
+echo "Scripts executable"
 
 echo
-echo "🎉 Done! Project is ready to be executed."
+echo "Done! Project is ready to be executed."
 read -p "Press any key to close the terminal window..."
