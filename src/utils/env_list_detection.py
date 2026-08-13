@@ -3,12 +3,14 @@ import json
 import os
 import shutil
 import subprocess
+from pathlib import Path
 
 def detect_required_libraries_env() -> list[str]:
     """Read required package names from infra/requirements.txt."""
     installed_libraries = []
-    path_env = os.path.join(os.getcwd(), "infra", "requirements.txt")
-    with open(path_env, "r") as file:
+    # Build path from this file location to avoid cwd-dependent errors.
+    path_env = Path(__file__).resolve().parents[2] / "infra" / "requirements.txt"
+    with open(path_env, "r", encoding="utf-8") as file:
         for line in file:
             package_name = line.strip()
             installed_libraries.append(package_name)
