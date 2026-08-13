@@ -73,15 +73,6 @@ pip install -r "$project_directory/infra/requirements.txt" || { read -p "Failed 
 echo "Requirements installed."
 echo
 
-echo "_____________________________________________________________________________"
-echo "Making launcher scripts executable..."
-cd "$project_directory/script/launch_program"
-for script in *.sh; do
-  chmod +x "$script"
-  echo "$script"
-done
-echo "Scripts executable"
-
 echo
-echo "Done! Project is ready to be executed."
+echo "Venv project environment is ready."
 read -p "Press any key to close the terminal window..."
