@@ -19,7 +19,7 @@ This project solves that by:
 
 The result is a cleaner dependency snapshot that is easier to review, share, and reuse: 
 
-![Application example](./documentation/langchain_example.png)
+<img src="./documentation/langchain_example.png" alt="Application example" width="50%">
 
 ## Stack
 
